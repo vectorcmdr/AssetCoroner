@@ -1,0 +1,41 @@
+name: 'AssetCoroner'
+description: 'Binary asset auditing, Unity reference scanning, and PR binary diff for game development repositories'
+author: 'vectorcmdr'
+
+branding:
+  icon: 'eye'
+  color: 'purple'
+
+inputs:
+  github-token:
+    description: 'GitHub token for API access'
+    required: true
+    default: ${{ github.token }}
+  config-path:
+    description: 'Path to assetcoroner.yml config file'
+    required: false
+    default: '.github/assetcoroner.yml'
+  pr-number:
+    description: 'Pull request number (set automatically for pull_request events)'
+    required: false
+    default: ''
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup .NET 10
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Run AssetCoroner
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_SHA: ${{ github.sha }}
+        GITHUB_PR_NUMBER: ${{ inputs.pr-number }}
+        ASSETCORONER_CONFIG: ${{ inputs.config-path }}
+      run: |
+        dotnet run --project ${{ github.action_path }}/src/AssetCoroner.Action/AssetCoroner.Action.csproj \
+          --configuration Release
