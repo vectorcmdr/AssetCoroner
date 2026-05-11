@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release-action:
+    name: Publish GitHub Action
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Publish Action binary (linux-x64)
+        run: |
+          dotnet publish src/AssetCoroner.Action/AssetCoroner.Action.csproj \
+            -c Release -r linux-x64 --self-contained true \
+            -p:PublishSingleFile=true \
+            -o dist/action-linux-x64
+
+      - name: Publish Action binary (win-x64)
+        run: |
+          dotnet publish src/AssetCoroner.Action/AssetCoroner.Action.csproj \
+            -c Release -r win-x64 --self-contained true \
+            -p:PublishSingleFile=true \
+            -o dist/action-win-x64
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/action-linux-x64/AssetCoroner.Action
+            dist/action-win-x64/AssetCoroner.Action.exe
+          generate_release_notes: true

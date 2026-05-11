@@ -1,0 +1,29 @@
+# AssetCoroner dogfoods itself on this repository
+audit:
+  enabled: true
+  schedule: "0 3 * * 1"
+  warn_threshold_mb: 5
+  critical_threshold_mb: 25
+  lfs_recommend_threshold_mb: 10
+  report_commit: false
+
+scan:
+  enabled: true
+  fail_on_broken_refs: true
+  warn_on_orphaned_meta: true
+
+review:
+  enabled: true
+  post_comment: true
+  block_on_critical: false
+  critical_delta_mb: 50
+  extensions:
+    - .fbx
+    - .obj
+    - .stl
+    - .prefab
+    - .unity
+    - .wav
+    - .png
+    - .psd
+    - .unitypackage
