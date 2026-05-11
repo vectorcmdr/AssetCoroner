@@ -1,0 +1,70 @@
+# =============================================================================
+# AssetCoroner Documentation Site - Jekyll Configuration
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Site Identity
+# -----------------------------------------------------------------------------
+title: AssetCoroner
+description: >-
+  Binary asset auditing, Unity reference scanning, and PR binary diff
+  for game development repositories on GitHub.
+
+# The full URL where the docs site will be served.
+# Update later if decide to use a subdomain.
+url: "https://vectorcmdr.github.io"
+baseurl: "/AssetCoroner"
+
+# -----------------------------------------------------------------------------
+# Repository
+# -----------------------------------------------------------------------------
+
+# The GitHub repository (owner/name) - used for edit links and badge URLs.
+gh_repo_owner: vectorcmdr
+gh_repo_name: AssetCoroner
+gh_repo_url: "https://github.com/vectorcmdr/AssetCoroner"
+
+# The GitHub Action reference users will put in their workflow files.
+# When published publicly this becomes the public repo reference,
+# e.g. vectorcmdr/AssetCoroner@v1
+action_ref: "vectorcmdr/AssetCoroner@v1"
+
+# -----------------------------------------------------------------------------
+# Theme - Just the Docs
+# https://just-the-docs.com
+# -----------------------------------------------------------------------------
+remote_theme: just-the-docs/just-the-docs
+
+color_scheme: dark
+
+# Navigation
+nav_sort: order
+
+# Footer
+footer_content: >-
+  AssetCoroner is MIT licensed.
+  <a href="{{ site.gh_repo_url }}">View on GitHub</a>.
+
+# -----------------------------------------------------------------------------
+# Plugins (GitHub Pages safe set)
+# -----------------------------------------------------------------------------
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+# -----------------------------------------------------------------------------
+# Build settings
+# -----------------------------------------------------------------------------
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Exclude files that should not be part of the built site
+exclude:
+  - "*.slnx"
+  - "*.csproj"
+  - Gemfile
+  - Gemfile.lock
