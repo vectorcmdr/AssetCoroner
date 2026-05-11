@@ -10,6 +10,8 @@
 ![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white)
 [![Stars](https://img.shields.io/github/stars/vectorcmdr/AssetCoroner?style=social)](https://github.com/vectorcmdr/AssetCoroner/stargazers)
 
+📥 Available to install in your repo via the [Marketplace](https://github.com/marketplace/actions/assetcoroner)
+
 ## What it does
 
 | Engine | Trigger | Capability |
