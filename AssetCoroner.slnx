@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AssetCoroner.Action/AssetCoroner.Action.csproj" />
+    <Project Path="src/AssetCoroner.Core/AssetCoroner.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/AssetCoroner.Action.Tests/AssetCoroner.Action.Tests.csproj" />
+    <Project Path="tests/AssetCoroner.Core.Tests/AssetCoroner.Core.Tests.csproj" />
+  </Folder>
+</Solution>
